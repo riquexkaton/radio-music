@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <audio src="http://source:gflZj5I7@link.zeno.fm:80/djpmy6sim0etv/" type="audio/mpeg"></audio>
+        <div class="container-balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+        <div class="glass"></div>
+        <div class="container-content">
+            <div class="logo">
+                RiquexFM
+            </div>
+            <div class="description">
+                !Lo tuyo no suena como esta mierda... mmgvo👻!
+            </div>
+            <div class="cursor"></div>
+        </div>
+    </div>
+</body>
+<script>
+    const cursorPointer = document.querySelector('.cursor');
+    const logo = document.querySelector('.logo');
+    const radio = document.querySelector('audio');
+
+    const changeIcon = (paused) => {
+        cursorPointer.textContent = `${paused ? '🎶' : '❌'}`;
+        cursorPointer.classList.add('cursor-play');
+    }
+
+    window.onmousemove = (e) => {
+        const { clientX, clientY } = e;
+        cursorPointer.style.top = `${clientY}px`;
+        cursorPointer.style.left = `${clientX}px`;
+    }
+
+    logo.onclick = () => {
+        if (radio.paused) {
+            radio.play();
+            changeIcon(radio.paused);
+        }
+        else {
+            radio.pause();
+            changeIcon(radio.paused);
+        }
+    }
+
+    logo.ontouchstart = () => {
+        if (radio.paused) {
+            radio.play();
+            changeIcon(radio.paused);
+        }
+        else {
+            radio.pause();
+            changeIcon(radio.paused);
+        }
+    }
+
+
+    logo.onmouseover = () => {
+        if (radio.paused) {
+            changeIcon(radio.paused)
+        }
+        else {
+            changeIcon(radio.paused)
+        }
+    }
+
+    logo.onmouseleave = () => {
+        cursorPointer.textContent = '';
+        cursorPointer.classList.remove('cursor-play');
+    }
+
+</script>
+
+</html>
